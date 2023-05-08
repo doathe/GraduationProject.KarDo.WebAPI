@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F247528A-6C5A-458A-856A-302BFC02F6FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A4F87C06-C3CF-4BCF-8E34-DC7FEB367F82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{0831EB66-F810-41FA-852A-08868849DF3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{88FE3418-6EBA-45FA-B763-98A491046B86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KarDo.Domain", "KarDo.Domain\KarDo.Domain.csproj", "{E9977DAC-9ABE-406A-A232-C4836681B7C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KarDo.Application", "KarDo.Application\KarDo.Application.csproj", "{93FDF741-392B-4B9F-BFF7-60C579943622}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KarDo.Infrastructure.EFCore", "KarDo.Infrastructure\KarDo.Infrastructure.EFCore.csproj", "{E5FCEAE0-4B8D-4E47-AE56-3800A8050EEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KarDo.WebAPI", "KarDo.WebAPI\KarDo.WebAPI.csproj", "{C817DDCC-0DF6-4E0A-B8D8-C7D5567659EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9977DAC-9ABE-406A-A232-C4836681B7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9977DAC-9ABE-406A-A232-C4836681B7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9977DAC-9ABE-406A-A232-C4836681B7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9977DAC-9ABE-406A-A232-C4836681B7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93FDF741-392B-4B9F-BFF7-60C579943622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FDF741-392B-4B9F-BFF7-60C579943622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FDF741-392B-4B9F-BFF7-60C579943622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FDF741-392B-4B9F-BFF7-60C579943622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5FCEAE0-4B8D-4E47-AE56-3800A8050EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FCEAE0-4B8D-4E47-AE56-3800A8050EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5FCEAE0-4B8D-4E47-AE56-3800A8050EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FCEAE0-4B8D-4E47-AE56-3800A8050EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C817DDCC-0DF6-4E0A-B8D8-C7D5567659EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C817DDCC-0DF6-4E0A-B8D8-C7D5567659EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C817DDCC-0DF6-4E0A-B8D8-C7D5567659EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C817DDCC-0DF6-4E0A-B8D8-C7D5567659EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A4F87C06-C3CF-4BCF-8E34-DC7FEB367F82} = {F247528A-6C5A-458A-856A-302BFC02F6FD}
+		{0831EB66-F810-41FA-852A-08868849DF3F} = {F247528A-6C5A-458A-856A-302BFC02F6FD}
+		{88FE3418-6EBA-45FA-B763-98A491046B86} = {F247528A-6C5A-458A-856A-302BFC02F6FD}
+		{E9977DAC-9ABE-406A-A232-C4836681B7C5} = {A4F87C06-C3CF-4BCF-8E34-DC7FEB367F82}
+		{93FDF741-392B-4B9F-BFF7-60C579943622} = {A4F87C06-C3CF-4BCF-8E34-DC7FEB367F82}
+		{E5FCEAE0-4B8D-4E47-AE56-3800A8050EEA} = {0831EB66-F810-41FA-852A-08868849DF3F}
+		{C817DDCC-0DF6-4E0A-B8D8-C7D5567659EF} = {88FE3418-6EBA-45FA-B763-98A491046B86}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF308340-5070-4DC5-A191-A981DDA6CA27}
+	EndGlobalSection
+EndGlobal

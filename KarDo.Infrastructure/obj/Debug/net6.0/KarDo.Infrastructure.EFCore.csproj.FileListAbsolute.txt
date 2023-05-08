@@ -1,0 +1,34 @@
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.csproj.AssemblyReference.cache
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.AssemblyInfoInputs.cache
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.AssemblyInfo.cs
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.csproj.CoreCompileInputs.cache
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Infrastructure.EFCore.deps.json
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Infrastructure.EFCore.runtimeconfig.json
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Infrastructure.EFCore.dll
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Infrastructure.EFCore.pdb
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Domain.dll
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Domain.pdb
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.csproj.CopyComplete
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.dll
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\refint\KarDo.Infrastructure.EFCore.dll
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.pdb
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.genruntimeconfig.cache
+C:\Users\nisat\Desktop\Bitirme Projesi\Project\KarDo.BackendProject\KarDo.Infrastructure\obj\Debug\net6.0\ref\KarDo.Infrastructure.EFCore.dll
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Infrastructure.EFCore.deps.json
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Infrastructure.EFCore.runtimeconfig.json
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Infrastructure.EFCore.dll
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Infrastructure.EFCore.pdb
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Domain.dll
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\bin\Debug\net6.0\KarDo.Domain.pdb
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.csproj.AssemblyReference.cache
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.AssemblyInfoInputs.cache
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.AssemblyInfo.cs
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.csproj.CoreCompileInputs.cache
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.csproj.CopyComplete
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.dll
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\refint\KarDo.Infrastructure.EFCore.dll
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.pdb
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\KarDo.Infrastructure.EFCore.genruntimeconfig.cache
+C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Infrastructure\obj\Debug\net6.0\ref\KarDo.Infrastructure.EFCore.dll
