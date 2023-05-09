@@ -29,7 +29,7 @@ namespace KarDo.Infrastructure.EFCore.Library
         }
 
         /// Kullanıcı üzerinde tanımlı tokenı döner;Token yoksa oluşturur. Expire olmuşsa update eder.
-        public ApplicationUserToken GetToken()
+        public TokenInfo GetToken()
         {
             ApplicationUserToken userTokens = null;
             TokenInfo tokenInfo = null;
@@ -66,7 +66,7 @@ namespace KarDo.Infrastructure.EFCore.Library
 
             _context.SaveChanges();
 
-            return userTokens;
+            return tokenInfo;
     }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KarDo.Infrastructure.EFCore.Library
         /// <returns></returns>
         private TokenInfo GenerateToken()
         {
-            DateTime expireDate = DateTime.Now.AddSeconds(10);
+            DateTime expireDate = DateTime.Now.AddMinutes(15);
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_config["Application:Secret"]);
 

@@ -1,4 +1,5 @@
-﻿using KarDo.Domain.AggregateModels.UserAggregate;
+﻿using KarDo.Domain.AggregateModels.EventAggregate;
+using KarDo.Domain.AggregateModels.UserAggregate;
 using KarDo.Domain.IdentityModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -10,6 +11,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+/// Migrations = add-migrations name
+/// Db update = update-database
+
 
 namespace KarDo.Infrastructure.EFCore.Context
 {
@@ -29,21 +34,7 @@ namespace KarDo.Infrastructure.EFCore.Context
         {
             modelBuilder.HasDefaultSchema("dbo");
 
-            //// Id Column tipine bak !!! Guid = uniqueidentifier ?
-            //modelBuilder.Entity<User>(entity =>
-            //{
-            //    entity.ToTable("user");
-
-            //    entity.Property(i => i.Id).HasColumnName("id").HasColumnType("int").ValueGeneratedOnAdd().UseIdentityColumn().IsRequired();
-            //    entity.Property(i => i.FirstName).HasColumnName("first_name").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
-            //    entity.Property(i => i.LastName).HasColumnName("last_name").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
-            //    entity.Property(i => i.UserName).HasColumnName("username").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
-            //    entity.Property(i => i.Email).HasColumnName("email").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
-            //    entity.Property(i => i.PasswordHash).HasColumnName("password").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
-                
-            //    entity.Property(i => i.CreatedOn).HasColumnName("created_on").HasColumnType("datetime2").IsRequired();
-            //    entity.Property(i => i.UpdatedOn).HasColumnName("updated_on").HasColumnType("datetime2").IsRequired();
-            //});
+            modelBuilder.Entity<Event>(entity => entity.ToTable("events"));
 
             base.OnModelCreating(modelBuilder);
         }

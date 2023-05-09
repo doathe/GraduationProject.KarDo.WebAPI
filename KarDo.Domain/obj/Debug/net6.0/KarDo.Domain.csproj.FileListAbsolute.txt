@@ -22,3 +22,15 @@ C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Domain\obj\De
 C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Domain\obj\Debug\net6.0\refint\KarDo.Domain.dll
 C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Domain\obj\Debug\net6.0\KarDo.Domain.pdb
 C:\Users\nisat\Desktop\GraduationProject.KarDo.WebAPI-master\KarDo.Domain\obj\Debug\net6.0\ref\KarDo.Domain.dll
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\bin\Debug\net6.0\KarDo.Domain.deps.json
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\bin\Debug\net6.0\KarDo.Domain.dll
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\bin\Debug\net6.0\KarDo.Domain.pdb
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\KarDo.Domain.csproj.AssemblyReference.cache
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\KarDo.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\KarDo.Domain.AssemblyInfoInputs.cache
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\KarDo.Domain.AssemblyInfo.cs
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\KarDo.Domain.csproj.CoreCompileInputs.cache
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\KarDo.Domain.dll
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\refint\KarDo.Domain.dll
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\KarDo.Domain.pdb
+C:\Users\nisat\Desktop\GitHub.Projects\GraduationProject.KarDo.WebAPI\KarDo.Domain\obj\Debug\net6.0\ref\KarDo.Domain.dll

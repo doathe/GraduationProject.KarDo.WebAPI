@@ -36,7 +36,7 @@ namespace KarDo.Infrastructure.EFCore.Repositories
         {
             return _dbContext.Set<ApplicationUser>().Any(x => x.UserName == username);
         }
-        public ApplicationUserToken Authorization(ApplicationUser userModel)
+        public TokenInfo Authorization(ApplicationUser userModel)
         {
             AccessTokenGenerator _tokengenerator = new AccessTokenGenerator(_dbContext, _config, userModel);
 

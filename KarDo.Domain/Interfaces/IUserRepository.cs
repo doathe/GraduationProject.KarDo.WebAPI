@@ -14,6 +14,6 @@ namespace KarDo.Domain.Interfaces
         Task<ApplicationUser?> GetByUsernameAsync(string username);
         Task<bool> EmailExistCheckAsync(string email);
         Task<bool> UsernameExistCheckAsync(string username);
-        public ApplicationUserToken Authorization(ApplicationUser userModel);
+        public TokenInfo Authorization(ApplicationUser userModel);
     }
 }

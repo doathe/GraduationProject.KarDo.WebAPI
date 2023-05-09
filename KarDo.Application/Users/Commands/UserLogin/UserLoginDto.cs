@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using KarDo.Application.Users.Commands.UserRegistration;
 using KarDo.Domain.AggregateModels.UserAggregate;
 using KarDo.Domain.IdentityModels;
 using System;
@@ -12,9 +11,9 @@ namespace KarDo.Application.Users.Commands.UserLogin
 {
     public class UserLoginDto
     {
-        public ApplicationUserToken TokenInfo { get; set; }
+        public TokenInfo TokenInfo { get; set; }
         public string Message { get; set; }
-        public UserLoginDto(ApplicationUserToken tokenInfo)
+        public UserLoginDto(TokenInfo tokenInfo)
         {
             Message = "Login successfull";
             TokenInfo = tokenInfo;

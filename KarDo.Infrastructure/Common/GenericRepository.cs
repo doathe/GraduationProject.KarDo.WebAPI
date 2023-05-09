@@ -17,7 +17,7 @@ namespace KarDo.Infrastructure.EFCore.Common
         {
             this.dbContext = dbContext;
         }
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(string id)
         {
             return await dbContext.Set<T>().FindAsync(id);
         }
@@ -32,7 +32,7 @@ namespace KarDo.Infrastructure.EFCore.Common
             await dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
             var entity = await GetByIdAsync(id);
             if (entity == null)
