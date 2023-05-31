@@ -1,4 +1,5 @@
-﻿using KarDo.Domain.AggregateModels.UserAggregate;
+﻿using KarDo.Domain.AggregateModels.EventAggregate;
+using KarDo.Domain.AggregateModels.UserAggregate;
 using KarDo.Domain.IdentityModels;
 using KarDo.Domain.Interfaces;
 using KarDo.Infrastructure.EFCore.Common;
@@ -43,6 +44,24 @@ namespace KarDo.Infrastructure.EFCore.Repositories
             var token = _tokengenerator.GetToken();
 
             return token;
+        }
+
+        public async Task UpdateUserAsync(ApplicationUser entity, string id)
+        {
+            //Guid.TryParse(id, out Guid idGuid);
+            var existingEntity = await _dbContext.Set<ApplicationUser>().FindAsync(id);
+
+            if (existingEntity != null)
+            {
+                existingEntity.FirstName = entity.FirstName;
+                existingEntity.LastName = entity.LastName;
+                existingEntity.UserName = entity.UserName;
+                existingEntity.Email = entity.Email;
+                existingEntity.PasswordHash = entity.PasswordHash;
+                _dbContext.Update(existingEntity);
+                //_dbContext.Entry(existingEntity).CurrentValues.SetValues(entity);
+                await _dbContext.SaveChangesAsync();
+            }
         }
     }
 }

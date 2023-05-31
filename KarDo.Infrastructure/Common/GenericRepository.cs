@@ -1,6 +1,7 @@
 ﻿using KarDo.Domain.SeedWork;
 using KarDo.Infrastructure.EFCore.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,12 @@ namespace KarDo.Infrastructure.EFCore.Common
         }
         public async Task<T> GetByIdAsync(string id)
         {
-            return await dbContext.Set<T>().FindAsync(id);
+            Guid.TryParse(id, out Guid idGuid);
+            if (idGuid != Guid.Empty)
+            {
+                return await dbContext.Set<T>().FindAsync(idGuid);
+            }
+            return null;
         }
         public async Task<IEnumerable<T>> GetAllAsync()
         {
@@ -41,15 +47,17 @@ namespace KarDo.Infrastructure.EFCore.Common
             await dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity, string id)
         {
-            var existingEntity = await dbContext.Set<T>().FindAsync(entity);
+            Guid.TryParse(id, out Guid idGuid);
+            var existingEntity = await dbContext.Set<T>().FindAsync(idGuid);
 
             if (existingEntity != null)
             {
                 dbContext.Entry(existingEntity).CurrentValues.SetValues(entity);
                 await dbContext.SaveChangesAsync();
             }
+            throw new Exception("Not found");
         }
     }
 }

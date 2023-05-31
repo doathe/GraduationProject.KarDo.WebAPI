@@ -1,7 +1,7 @@
 ﻿using KarDo.Application.Users.Commands.UserLogin;
 using KarDo.Application.Users.Commands.UserRegistration;
+using KarDo.Application.Users.Commands.UserUpdate;
 using KarDo.Application.Users.Queries.GetUserById;
-using KarDo.Infrastructure.EFCore.Library;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,14 +30,14 @@ namespace KarDo.WebAPI.Controllers
         [Route("login")]
         public async Task<IActionResult> LoginUser(UserLoginCommand command)
         {
-            return Ok(await mediator.Send(command));
+            return new JsonResult(await mediator.Send(command));
         }
 
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> RegisterUser(UserRegistrationCommand command)
         {
-            return Ok(await mediator.Send(command));
+            return new JsonResult(await mediator.Send(command));
         }
 
         [Authorize]
@@ -74,6 +74,63 @@ namespace KarDo.WebAPI.Controllers
                     {
                         // userId kullanarak kullanıcıyı bulabilirsiniz
                         var result = await mediator.Send(new GetUserByIdQuery(userId.ToString()));
+                        return new JsonResult(result);
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid user ID.");
+                    }
+                }
+                catch (SecurityTokenExpiredException)
+                {
+                    return BadRequest("Token has expired.");
+                }
+                catch (SecurityTokenInvalidSignatureException)
+                {
+                    return BadRequest("Invalid token signature.");
+                }
+                catch (SecurityTokenException)
+                {
+                    return BadRequest("Invalid token.");
+                }
+            }
+            return BadRequest("Invalid authorization header.");
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("user-update")]
+        public async Task<IActionResult> UserUpdate(UserUpdateCommand command)
+        {
+            var authHeader = _httpContextAccessor.HttpContext.Request.Headers["Authorization"];
+            if (!string.IsNullOrEmpty(authHeader) && authHeader.ToString().StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+            {
+                var token = authHeader.ToString()[7..];
+
+                try
+                {
+                    // Token'ı çözümle
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var key = Encoding.ASCII.GetBytes(_config["Application:Secret"]);
+                    tokenHandler.ValidateToken(token, new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = true,
+                        ValidIssuer = _config["Application:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = _config["Application:Audience"],
+                        ClockSkew = TimeSpan.Zero
+                    }, out SecurityToken validatedToken);
+
+                    // Token içindeki claim'leri oku
+                    var jwtToken = (JwtSecurityToken)validatedToken;
+                    var userId = jwtToken.Claims.FirstOrDefault(x => x.Type == "nameid")?.Value;
+
+                    if (userId != null)
+                    {
+                        command.UserId = userId.ToString();
+                        var result = await mediator.Send(command);
                         return new JsonResult(result);
                     }
                     else

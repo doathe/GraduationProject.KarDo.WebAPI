@@ -1,4 +1,5 @@
-﻿using KarDo.Domain.AggregateModels.UserAggregate;
+﻿using KarDo.Domain.AggregateModels.EventAggregate;
+using KarDo.Domain.AggregateModels.UserAggregate;
 using KarDo.Domain.IdentityModels;
 using KarDo.Domain.SeedWork;
 using System;
@@ -15,5 +16,6 @@ namespace KarDo.Domain.Interfaces
         Task<bool> EmailExistCheckAsync(string email);
         Task<bool> UsernameExistCheckAsync(string username);
         public TokenInfo Authorization(ApplicationUser userModel);
+        public Task UpdateUserAsync(ApplicationUser entity, string id);
     }
 }

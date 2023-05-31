@@ -20,12 +20,4 @@
     <ProjectReference Include="..\KarDo.Infrastructure\KarDo.Infrastructure.EFCore.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Events\Commands\EventCreate\" />
-    <Folder Include="Events\Commands\EventUpdate\" />
-    <Folder Include="Events\Queries\GetEventById\" />
-    <Folder Include="Events\Queries\GetEventAll\" />
-    <Folder Include="Users\Commands\UserUpdate\" />
-  </ItemGroup>
-
 </Project>

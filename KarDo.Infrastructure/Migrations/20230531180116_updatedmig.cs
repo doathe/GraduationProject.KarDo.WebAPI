@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace KarDo.Infrastructure.EFCore.Migrations
 {
     /// <inheritdoc />
-    public partial class initMigrations : Migration
+    public partial class updatedmig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -178,6 +178,62 @@ namespace KarDo.Infrastructure.EFCore.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "events",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EventDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShowType = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_events", x => x.Id);
+                    table.ForeignKey(
+                        name: "user_event_id_fk",
+                        column: x => x.UserId,
+                        principalSchema: "dbo",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "user_event_join",
+                schema: "dbo",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IsJoined = table.Column<bool>(type: "bit", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_user_event_join", x => new { x.UserId, x.EventId });
+                    table.ForeignKey(
+                        name: "event_user_join_id_fk",
+                        column: x => x.EventId,
+                        principalSchema: "dbo",
+                        principalTable: "events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "user_event_join_id_fk",
+                        column: x => x.UserId,
+                        principalSchema: "dbo",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 schema: "dbo",
@@ -223,6 +279,18 @@ namespace KarDo.Infrastructure.EFCore.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_events_UserId",
+                schema: "dbo",
+                table: "events",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_event_join_EventId",
+                schema: "dbo",
+                table: "user_event_join",
+                column: "EventId");
         }
 
         /// <inheritdoc />
@@ -249,7 +317,15 @@ namespace KarDo.Infrastructure.EFCore.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
+                name: "user_event_join",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "events",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

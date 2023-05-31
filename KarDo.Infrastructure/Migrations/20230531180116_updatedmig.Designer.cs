@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarDo.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230506172746_initMigrations")]
-    partial class initMigrations
+    [Migration("20230531180116_updatedmig")]
+    partial class updatedmig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,39 @@ namespace KarDo.Infrastructure.EFCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("KarDo.Domain.AggregateModels.EventAggregate.Event", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EventDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ShowType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("events", "dbo");
+                });
 
             modelBuilder.Entity("KarDo.Domain.AggregateModels.UserAggregate.ApplicationUser", b =>
                 {
@@ -103,6 +136,33 @@ namespace KarDo.Infrastructure.EFCore.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", "dbo");
+                });
+
+            modelBuilder.Entity("KarDo.Domain.AggregateModels.UserEventJoinAggregate.UserEventJoin", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsJoined")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("UserId", "EventId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("user_event_join", "dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -256,6 +316,39 @@ namespace KarDo.Infrastructure.EFCore.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUserToken");
                 });
 
+            modelBuilder.Entity("KarDo.Domain.AggregateModels.EventAggregate.Event", b =>
+                {
+                    b.HasOne("KarDo.Domain.AggregateModels.UserAggregate.ApplicationUser", "User")
+                        .WithMany("Events")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("user_event_id_fk");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("KarDo.Domain.AggregateModels.UserEventJoinAggregate.UserEventJoin", b =>
+                {
+                    b.HasOne("KarDo.Domain.AggregateModels.EventAggregate.Event", "Event")
+                        .WithMany("EventUserJoins")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("event_user_join_id_fk");
+
+                    b.HasOne("KarDo.Domain.AggregateModels.UserAggregate.ApplicationUser", "User")
+                        .WithMany("UserEventJoins")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("user_event_join_id_fk");
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -305,6 +398,18 @@ namespace KarDo.Infrastructure.EFCore.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("KarDo.Domain.AggregateModels.EventAggregate.Event", b =>
+                {
+                    b.Navigation("EventUserJoins");
+                });
+
+            modelBuilder.Entity("KarDo.Domain.AggregateModels.UserAggregate.ApplicationUser", b =>
+                {
+                    b.Navigation("Events");
+
+                    b.Navigation("UserEventJoins");
                 });
 #pragma warning restore 612, 618
         }

@@ -103,7 +103,7 @@ namespace KarDo.Infrastructure.EFCore.Library
         /// <returns></returns>
         private TokenInfo GenerateToken()
         {
-            DateTime expireDate = DateTime.Now.AddMinutes(15);
+            DateTime expireDate = DateTime.Now.AddMinutes(30);
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_config["Application:Secret"]);
 

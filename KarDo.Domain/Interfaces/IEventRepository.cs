@@ -11,6 +11,8 @@ namespace KarDo.Domain.Interfaces
 {
     public interface IEventRepository : IGenericRepository<Event>
     {
-
+        public Task UpdateEventAsync(Event entity, string id);
+        public Task<IEnumerable<Event>> GetEventAllAsync();
+        public Task<IEnumerable<Event>> GetEventByUserIdAsync(string id);
     }
 }
