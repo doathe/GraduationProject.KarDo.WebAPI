@@ -20,12 +20,7 @@ namespace KarDo.Infrastructure.EFCore.Common
         }
         public async Task<T> GetByIdAsync(string id)
         {
-            Guid.TryParse(id, out Guid idGuid);
-            if (idGuid != Guid.Empty)
-            {
-                return await dbContext.Set<T>().FindAsync(idGuid);
-            }
-            return null;
+            return await dbContext.Set<T>().FindAsync(id);
         }
         public async Task<IEnumerable<T>> GetAllAsync()
         {
