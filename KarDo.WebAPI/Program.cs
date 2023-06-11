@@ -4,14 +4,8 @@ using KarDo.Application.Users.Commands.UserRegistration;
 using KarDo.Infrastructure.EFCore;
 using KarDo.Infrastructure.EFCore.Context;
 using KarDo.WebAPI.Middlewares;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-
-
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
