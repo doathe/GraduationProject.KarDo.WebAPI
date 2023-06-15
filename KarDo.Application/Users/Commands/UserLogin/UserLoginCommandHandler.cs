@@ -36,7 +36,9 @@ namespace KarDo.Application.Users.Commands.UserLogin
 
             var token = _userRepository.Authorization(userCheck);
 
-            return await Task.FromResult(new UserLoginDto(token));
+            var responseModel = _mapper.Map<UserLoginDto>(token);
+
+            return await Task.FromResult(responseModel);
         }
     }
 }

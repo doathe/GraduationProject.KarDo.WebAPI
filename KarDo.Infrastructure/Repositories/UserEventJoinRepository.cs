@@ -27,12 +27,12 @@ namespace KarDo.Infrastructure.EFCore.Repositories
 
         public async Task UserEventJoinCheckAsync(UserEventJoin entity)
         {
-            var existingEntity = await _dbContext.UserEventJoins.FirstOrDefaultAsync(x => x.UserId == entity.UserId && x.EventId == entity.EventId);
+            var existingEntity = await _dbContext.UserEventJoins.Include(i => i.User).FirstOrDefaultAsync(x => x.UserId == entity.UserId && x.EventId == entity.EventId);
             if(existingEntity != null)
             {
-                if (existingEntity.IsJoined != entity.IsJoined)
+                if (entity.IsJoined == false)
                 {
-                    await UserEventJoinUpdateAsync(entity);
+                    await UserEventJoinDeleteAsync(entity);
                 }
             }
             else
@@ -51,6 +51,16 @@ namespace KarDo.Infrastructure.EFCore.Repositories
                 _dbContext.Update(existingEntity);
                 await _dbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task UserEventJoinDeleteAsync(UserEventJoin entity)
+        {
+            var existingEntity = await _dbContext.UserEventJoins.FirstOrDefaultAsync(x => x.UserId == entity.UserId && x.EventId == entity.EventId);
+            if (existingEntity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+            _dbContext.UserEventJoins.Remove(existingEntity);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

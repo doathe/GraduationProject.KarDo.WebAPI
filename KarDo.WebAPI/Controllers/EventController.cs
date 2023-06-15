@@ -4,6 +4,7 @@ using KarDo.Application.Events.Commands.EventDelete;
 using KarDo.Application.Events.Commands.EventUpdate;
 using KarDo.Application.Events.Queries.GetEventAll;
 using KarDo.Application.Events.Queries.GetEventByUserId;
+using KarDo.Application.UserEventJoins.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -145,6 +146,63 @@ namespace KarDo.WebAPI.Controllers
                         var query = new GetEventByUserIdQuery();
                         query.UserId = userId.ToString();
                         var result = await mediator.Send(query);
+                        return new JsonResult(result);
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid user ID.");
+                    }
+                }
+                catch (SecurityTokenExpiredException)
+                {
+                    return BadRequest("Token has expired.");
+                }
+                catch (SecurityTokenInvalidSignatureException)
+                {
+                    return BadRequest("Invalid token signature.");
+                }
+                catch (SecurityTokenException)
+                {
+                    return BadRequest("Invalid token.");
+                }
+            }
+            return BadRequest("Invalid authorization header.");
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("user-event-join")]
+        public async Task<IActionResult> UserEventJoinCreate(UserEventJoinCommand command)
+        {
+            var authHeader = _httpContextAccessor.HttpContext.Request.Headers["Authorization"];
+            if (!string.IsNullOrEmpty(authHeader) && authHeader.ToString().StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+            {
+                var token = authHeader.ToString()[7..];
+
+                try
+                {
+                    // Token'ı çözümle
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var key = Encoding.ASCII.GetBytes(_config["Application:Secret"]);
+                    tokenHandler.ValidateToken(token, new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = true,
+                        ValidIssuer = _config["Application:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = _config["Application:Audience"],
+                        ClockSkew = TimeSpan.Zero
+                    }, out SecurityToken validatedToken);
+
+                    // Token içindeki claim'leri oku
+                    var jwtToken = (JwtSecurityToken)validatedToken;
+                    var userId = jwtToken.Claims.FirstOrDefault(x => x.Type == "nameid")?.Value;
+
+                    if (userId != null)
+                    {
+                        command.UserId = userId.ToString();
+                        var result = await mediator.Send(command);
                         return new JsonResult(result);
                     }
                     else

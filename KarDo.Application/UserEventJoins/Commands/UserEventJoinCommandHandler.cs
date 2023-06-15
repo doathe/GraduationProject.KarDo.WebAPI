@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KarDo.Domain.AggregateModels.UserEventJoinAggregate;
 using KarDo.Domain.Interfaces;
 using MediatR;
 using System;
@@ -11,12 +12,21 @@ namespace KarDo.Application.UserEventJoins.Commands
 {
     public class UserEventJoinCommandHandler : IRequestHandler<UserEventJoinCommand, UserEventJoinDto>
     {
-        //private readonly IUserRepository _userRepository;
+        private readonly IUserEventJoinRepository _userEventJoinRepository;
         private readonly IMapper _mapper;
 
-        public Task<UserEventJoinDto> Handle(UserEventJoinCommand request, CancellationToken cancellationToken)
+        public UserEventJoinCommandHandler(IUserEventJoinRepository userEventJoinRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _userEventJoinRepository = userEventJoinRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<UserEventJoinDto> Handle(UserEventJoinCommand request, CancellationToken cancellationToken)
+        {
+            var requestModel = _mapper.Map<UserEventJoin>(request);
+            await _userEventJoinRepository.UserEventJoinCheckAsync(requestModel);
+
+            return await Task.FromResult(new UserEventJoinDto());
         }
     }
 }

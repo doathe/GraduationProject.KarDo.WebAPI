@@ -1,5 +1,4 @@
-﻿using KarDo.Domain.AggregateModels.EventAggregate;
-using KarDo.Domain.AggregateModels.UserEventJoinAggregate;
+﻿using KarDo.Domain.AggregateModels.UserEventJoinAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +12,6 @@ namespace KarDo.Domain.Interfaces
         public Task UserEventJoinCheckAsync(UserEventJoin entity);
         public Task UserEventJoinAddAsync(UserEventJoin entity);
         public Task UserEventJoinUpdateAsync(UserEventJoin entity);
+        public Task UserEventJoinDeleteAsync(UserEventJoin entity);
     }
 }

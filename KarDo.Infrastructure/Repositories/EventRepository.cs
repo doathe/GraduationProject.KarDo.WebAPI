@@ -1,5 +1,4 @@
-﻿
-using KarDo.Domain.AggregateModels.EventAggregate;
+﻿using KarDo.Domain.AggregateModels.EventAggregate;
 using KarDo.Domain.Interfaces;
 using KarDo.Infrastructure.EFCore.Common;
 using KarDo.Infrastructure.EFCore.Context;
@@ -36,12 +35,12 @@ namespace KarDo.Infrastructure.EFCore.Repositories
         }
         public async Task<IEnumerable<Event>> GetEventAllAsync()
         {
-            return await _dbContext.Set<Event>().Where(x => x.ShowType == 1).Include(i => i.User).ToListAsync();
+            return await _dbContext.Set<Event>().Where(x => x.ShowType == 1).Include(i => i.User).Include(i => i.EventUserJoins).OrderByDescending(i => i.CreatedOn).ToListAsync();
         }
         public async Task<IEnumerable<Event>> GetEventByUserIdAsync(string id)
         {
             //Guid.TryParse(id, out Guid idGuid);
-            return await _dbContext.Set<Event>().Where(x => x.UserId == id).Include(i => i.User).ToListAsync();
+            return await _dbContext.Set<Event>().Where(x => x.UserId == id).Include(i => i.User).OrderByDescending(i => i.CreatedOn).ToListAsync();
         }
     }
 }
