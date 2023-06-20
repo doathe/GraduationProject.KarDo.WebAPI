@@ -35,7 +35,7 @@ namespace KarDo.Infrastructure.EFCore.Repositories
         }
         public async Task<IEnumerable<Event>> GetEventAllAsync()
         {
-            return await _dbContext.Set<Event>().Where(x => x.ShowType == 1).Include(i => i.User).Include(i => i.EventUserJoins).OrderByDescending(i => i.CreatedOn).ToListAsync();
+            return await _dbContext.Events.Where(x => x.ShowType == 1).Include(i => i.User).Include(i => i.EventUserJoins).OrderByDescending(i => i.CreatedOn).ToListAsync();
         }
         public async Task<IEnumerable<Event>> GetEventByUserIdAsync(string id)
         {

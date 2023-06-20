@@ -13,7 +13,7 @@ namespace KarDo.Application.Events.Queries.GetEventAll
     {
         public string Id { get; set; }
         public string UserName { get; set; }
-        public DateTime EventDate { get; set; }
+        public DateOnly EventDate { get; set; }
         public string Name { get; set; }
         public string ShowType { get; set; }
         public IEnumerable<string> UserJoinNames { get; set; }
@@ -23,10 +23,11 @@ namespace KarDo.Application.Events.Queries.GetEventAll
         public GetEventAllProfile()
         {
             CreateMap<GetEventAllQuery, GetEventAllDto>().ReverseMap();
-            CreateMap<GetEventAllDto, Event>().ReverseMap()
+            CreateMap<Event, GetEventAllDto>()
                 .ForPath(destination => destination.UserName, operation => operation.MapFrom(source => source.User.UserName))
                 .ForMember(destination => destination.ShowType, operation => operation.MapFrom(source => Enum.Parse(typeof(ShowType), source.ShowType.ToString())))
-                .ForMember(destination => destination.UserJoinNames, operation => operation.MapFrom(source => source.EventUserJoins.Select(i => i.User.UserName)));
+                .ForMember(destination => destination.EventDate, options => options.MapFrom(source => DateOnly.FromDateTime(source.EventDate)))
+                .ForPath(destination => destination.UserJoinNames, options => options.MapFrom(source => source.EventUserJoins.Select(i => i.User.UserName).ToList()));
         }
     }
 }

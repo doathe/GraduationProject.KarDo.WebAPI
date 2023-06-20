@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KarDo.Application.UserEventJoins.Commands
 {
-    public class UserEventJoinCommand : IRequest<UserEventJoinDto>
+    public class UserEventJoinCommand : IRequest<IEnumerable<string>>
     {
         [FromBody]
         public string? UserId { get; set; }

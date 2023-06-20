@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace KarDo.Application.UserEventJoins.Commands
 {
-    public class UserEventJoinCommandHandler : IRequestHandler<UserEventJoinCommand, UserEventJoinDto>
+    public class UserEventJoinCommandHandler : IRequestHandler<UserEventJoinCommand, IEnumerable<string>>
     {
         private readonly IUserEventJoinRepository _userEventJoinRepository;
         private readonly IMapper _mapper;
@@ -21,12 +21,12 @@ namespace KarDo.Application.UserEventJoins.Commands
             _mapper = mapper;
         }
 
-        public async Task<UserEventJoinDto> Handle(UserEventJoinCommand request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> Handle(UserEventJoinCommand request, CancellationToken cancellationToken)
         {
             var requestModel = _mapper.Map<UserEventJoin>(request);
-            await _userEventJoinRepository.UserEventJoinCheckAsync(requestModel);
+            var responseModel = await _userEventJoinRepository.UserEventJoinCheckAsync(requestModel);
 
-            return await Task.FromResult(new UserEventJoinDto());
+            return await Task.FromResult(responseModel);
         }
     }
 }

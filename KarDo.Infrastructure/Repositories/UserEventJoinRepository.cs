@@ -25,7 +25,7 @@ namespace KarDo.Infrastructure.EFCore.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UserEventJoinCheckAsync(UserEventJoin entity)
+        public async Task<IEnumerable<string>> UserEventJoinCheckAsync(UserEventJoin entity)
         {
             var existingEntity = await _dbContext.UserEventJoins.Include(i => i.User).FirstOrDefaultAsync(x => x.UserId == entity.UserId && x.EventId == entity.EventId);
             if(existingEntity != null)
@@ -39,6 +39,9 @@ namespace KarDo.Infrastructure.EFCore.Repositories
             {
                 await UserEventJoinAddAsync(entity);
             }
+
+            var joinedUsers = _dbContext.UserEventJoins.Where(i => i.EventId == entity.EventId).Select(i => i.User.UserName).ToList();
+            return joinedUsers;
         }
 
         public async Task UserEventJoinUpdateAsync(UserEventJoin entity)
